@@ -29,6 +29,6 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "flow-bin": "latest"
+    "flow-bin": ">=0.170.0"
   }
 }

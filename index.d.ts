@@ -1,5 +1,5 @@
 /**
- * https://github.com/atmulyana/react-native-select
+ * https://github.com/atmulyana/rn-select
  */
 import type {Component} from 'react';
 import {Picker} from '@react-native-picker/picker';
