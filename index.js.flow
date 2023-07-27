@@ -1,7 +1,7 @@
 /**
  * Copy form Typescript definition of '@react-native-picker/picker'
  * 
- * https://github.com/atmulyana/rn-select
+ * https://github.com/atmulyana/react-native-select
  * 
  * @flow
  */

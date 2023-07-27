@@ -1,10 +1,10 @@
 {
-  "name": "rn-select",
+  "name": "react-native-select",
   "version": "0.0.1",
   "description": "React Native component which is like `SELECT` tag in HTML. It wraps `Picker` component of '@react-native-picker/picker' package",
   "author": "AT Mulyana <atmulyana@yahoo.com>",
   "license": "MIT",
-  "repository": "https://github.com/atmulyana/rn-select",
+  "repository": "https://github.com/atmulyana/react-native-select",
   "keywords": [
     "react-native",
     "select",
