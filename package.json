@@ -26,7 +26,7 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-native": "*"
+    "react-native": ">=0.57"
   },
   "devDependencies": {
     "flow-bin": ">=0.170.0"
