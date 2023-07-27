@@ -1,4 +1,4 @@
-# **react-native-select**
+# **rn-select-option**
 This package contains React Native component which is like `SELECT` tag in HTML. It wraps `Picker` component of
 '@react-native-picker/picker' package. This package contains two components: `Select` and `Option`.
 
@@ -10,14 +10,14 @@ Additionally, `Select` has two more props: `placeholder` and `placeholderTextCol
 
 `Option` component is an alias for `Picker.Item` component.
 
-Example of usage:
+**Example of usage:**
 ```javascript
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {
     Select,
     Option,
-} from 'react-native-select';
+} from 'rn-select-option';
 const countries = require('countries-list').countries;
 const items = Object.keys(countries).map(item => ({
     key: item,

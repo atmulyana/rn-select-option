@@ -1,5 +1,5 @@
 /**
- *  https://github.com/atmulyana/react-native-select
+ *  https://github.com/atmulyana/rn-select-option
  */
 import {StyleSheet} from 'react-native';
 
@@ -33,27 +33,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         overflow: 'hidden',
     },
-    pickerIOSClose: {
-        color: ARROW_COLOR,
-        fontSize: ARROW_BOX_SIZE,
-        fontWeight: 'bold',
-        opacity: 0.5,
-        textShadowOffset: {height: 2, width: 2},
-        textShadowColor: '#888',
-        position: 'absolute',
-        right: 6,
-        top: 6,
-    },
-    pickerIOSBackdrop: {
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'black',
-        opacity: 0.6,
-    },
-    pickerIOSContainer: {
-        ...StyleSheet.absoluteFillObject,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     pickerIOS: {
         backgroundColor: '#eee',
         height: 210,
@@ -63,6 +42,27 @@ export default StyleSheet.create({
         shadowColor: 'gray',
         shadowOffset: 2,
         width: '80%',
+    },
+    pickerIOSBackdrop: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'black',
+        opacity: 0.6,
+    },
+    pickerIOSClose: {
+        color: ARROW_COLOR,
+        fontSize: 16,
+        fontWeight: 'bold',
+        opacity: 0.5,
+        textShadowOffset: {height: 2, width: 2},
+        textShadowColor: '#888',
+        position: 'absolute',
+        right: 6,
+        top: 6,
+    },
+    pickerIOSContainer: {
+        ...StyleSheet.absoluteFillObject,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     ripple: {
         backgroundColor: '#666',

@@ -1,5 +1,5 @@
 /**
- * https://github.com/atmulyana/react-native-select
+ * https://github.com/atmulyana/rn-select-option
  */
 'use strict';
 import React from 'react';

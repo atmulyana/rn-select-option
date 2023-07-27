@@ -1,18 +1,16 @@
 {
-  "name": "react-native-select",
+  "name": "rn-select-option",
   "version": "0.0.1",
   "description": "React Native component which is like `SELECT` tag in HTML. It wraps `Picker` component of '@react-native-picker/picker' package",
   "author": "AT Mulyana <atmulyana@yahoo.com>",
   "license": "MIT",
-  "repository": "https://github.com/atmulyana/react-native-select",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "repository": "https://github.com/atmulyana/rn-select-option",
   "keywords": [
     "react-native",
+    "react native",
     "select",
     "picker",
+    "dropdown",
     "input"
   ],
   "main": "index.js",
@@ -33,6 +31,6 @@
     "react-native": ">=0.57"
   },
   "devDependencies": {
-    "flow-bin": ">=0.170.0"
+    "flow-bin": "*"
   }
 }
