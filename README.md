@@ -14,6 +14,10 @@ Additionally, `Select` has two more props: `placeholder` and `placeholderTextCol
 
     npm i @react-native-picker/picker rn-select-option
 
+For iOS, there is one more step:
+
+    npx pod-install
+
 **Example of usage:**
 ```javascript
 import React from 'react';
