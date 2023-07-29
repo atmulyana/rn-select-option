@@ -35,7 +35,7 @@ export default StyleSheet.create({
     },
     pickerIOS: {
         backgroundColor: '#eee',
-        height: 210,
+        height: 216,
         maxHeight: '95%',
         maxWidth: 400,
         overflow: 'hidden',

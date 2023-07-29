@@ -10,6 +10,10 @@ Additionally, `Select` has two more props: `placeholder` and `placeholderTextCol
 
 `Option` component is an alias for `Picker.Item` component.
 
+## **How to install**
+
+    npm i @react-native-picker/picker rn-select-option
+
 **Example of usage:**
 ```javascript
 import React from 'react';
