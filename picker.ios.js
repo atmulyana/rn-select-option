@@ -27,8 +27,6 @@ export default React.forwardRef(function Picker({children, ...props}, ref) {
         }
     });
 
-    const closeStyle = [styles.pickerIOSClose];
-    if (props.dropdownIconColor) closeStyle.push({color: props.dropdownIconColor});
     return <>
         <TouchableWithoutFeedback onPress={() => {
             props.onPress();
@@ -45,9 +43,7 @@ export default React.forwardRef(function Picker({children, ...props}, ref) {
                     <RNPicker {...props} style={StyleSheet.absoluteFill}>
                         {children}
                     </RNPicker>
-                    <TouchableWithoutFeedback onPress={() => showList(false)}>
-                        <Text style={closeStyle}>X</Text>
-                    </TouchableWithoutFeedback>
+                    <Text onPress={() => showList(false)} style={styles.pickerIOSClose}>X</Text>
                 </View>
             </View>
         </Modal>

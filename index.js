@@ -59,7 +59,7 @@ export const Select = React.forwardRef(function Select({
     );
     React.useEffect(() => {
         animSize.addListener(({value}) => animRadius.setValue(value / 2));
-    });
+    }, []);
     React.useEffect(() => {
         if (rippleBgColor != 'transparent') {
             Animated.timing(animSize, {
@@ -94,10 +94,13 @@ export const Select = React.forwardRef(function Select({
         </View>
         <Picker
             {...props}
-            {...{children, dropdownIconColor, numberOfLines, onPress, selectedValue}}
+            {...{children, numberOfLines, onPress, selectedValue}}
             ref={ref}
         />
     </View>;
 });
+
+export const select = () => Select;
+export const option = () => Option;
 
 export * from '@react-native-picker/picker';

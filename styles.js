@@ -49,12 +49,13 @@ export default StyleSheet.create({
         opacity: 0.6,
     },
     pickerIOSClose: {
-        color: ARROW_COLOR,
+        color: 'black',
         fontSize: 16,
         fontWeight: 'bold',
         opacity: 0.5,
-        textShadowOffset: {height: 2, width: 2},
         textShadowColor: '#888',
+        textShadowOffset: {height: 4, width: 4},
+        textShadowRadius: 4,
         position: 'absolute',
         right: 6,
         top: 6,
@@ -72,11 +73,14 @@ export default StyleSheet.create({
         width: ARROW_BOX_SIZE,
     },
     text: {
+        color: 'black',
         fontFamily: 'Arial',
         fontSize: 14,
         lineHeight: 17,
+        paddingVertical: 4,
     },
     textRequired: {
+        alignSelf: 'stretch',
         flex: 1,
     },
     touch: {

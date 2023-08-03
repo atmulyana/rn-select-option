@@ -132,7 +132,7 @@ export type PickerProps<T = ItemValue> = {
   placeholderTextColor?: ColorValue,
 }
 
-declare export var Select: React.AbstractComponent<PickerProps<>, {
+declare type SelectType<T> = React.AbstractComponent<PickerProps<T>, {
   /**
    * @platform android
    */
@@ -142,5 +142,9 @@ declare export var Select: React.AbstractComponent<PickerProps<>, {
    */
   blur: () => void;
 }>;
+declare export var Select: SelectType<ItemValue>;
+declare export function select<T>(): SelectType<T>;
 
-declare export var Option: React.AbstractComponent<PickerItemProps<>>;
+declare type OptionType<T> = React.AbstractComponent<PickerItemProps<T>>;
+declare export var Option: OptionType<ItemValue>;
+declare export function option<T>(): OptionType<T>;
