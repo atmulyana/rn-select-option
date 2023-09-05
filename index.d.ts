@@ -3,7 +3,8 @@
  */
 import type {Component} from 'react';
 import {Picker} from '@react-native-picker/picker';
-import type {PickerProps} from '@react-native-picker/picker';
+import type {PickerProps, PickerItemProps} from '@react-native-picker/picker';
+import type {ItemValue} from '@react-native-picker/picker/typings/Picker';
 
 declare class _Select<T> extends Picker<T>
     implements Component<PickerProps<T> & {
