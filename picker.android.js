@@ -20,7 +20,7 @@ export default React.forwardRef(function Picker({onPress, ...props}, ref) {
     });
 
     return <>
-        <RNPicker {...props} ref={pickerRef} style={styles.touch} />
+        <RNPicker {...props} ref={pickerRef} style={styles.touchPicker}  />
         <TouchableWithoutFeedback onPress={() => {
             onPress();
             pickerRef.current?.focus();

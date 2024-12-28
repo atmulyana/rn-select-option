@@ -85,7 +85,12 @@ export default StyleSheet.create({
     },
     touch: {
         ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'transparent',
         color: 'transparent',
+        //opacity: 0. //On iOS, transparent causes `TouchableWithoutFeedback` cannot be pressed. Perhaps, it's assumed that the component doesn't exist.
+    },
+    touchPicker: {
+        ...StyleSheet.absoluteFillObject,
         opacity: 0,
     },
 });
