@@ -1,150 +1,28 @@
 /**
- * Copy form Typescript definition of '@react-native-picker/picker'
- * 
  * https://github.com/atmulyana/rn-select-option
  * 
  * @flow
  */
 import * as React from 'react';
-import {TextInput, View} from 'react-native';
-import type {ExtractComponentPropsInstance} from 'reactjs-common';
+import {Picker} from '@react-native-picker/picker/js';
 
-type ViewProps = $Call<ExtractComponentPropsInstance, typeof View>['props'];
-type TextProps = $Call<ExtractComponentPropsInstance, typeof TextInput>['props'];
-type TextStyleProp = $NonMaybeType<TextProps['style']>;
-type ColorValue = $NonMaybeType<TextProps['placeholderTextColor']>;
-
+type BasePickerProps = React.ElementConfig<typeof Picker>;
+type BasePickerItemProps = React.ElementConfig<typeof Picker.Item>;
 export type ItemValue = number | string;
+export type PickerProps<T = ItemValue> = {|
+    ...BasePickerProps,
+    selectedValue?: T,
+    onValueChange?: (itemValue: T, itemIndex: number) => mixed,
+|};
+export type PickerItemProps<T = ItemValue> = {|
+    ...BasePickerItemProps,
+    value?: T,
+|};
 
-export interface PickerItemProps<T = ItemValue> {
-  label?: string;
-  value?: T;
-  color?: string;
-  fontFamily?: string;
-  testID?: string;
-  /**
-   * Style to apply to individual item labels.
-   * Only following values take effect:
-   *   - 'color'
-   *   - 'backgroundColor'
-   *   - 'fontSize'
-   *   - 'fontFamily'
-   *
-   * @platform android
-   */
-  style?: TextStyleProp;
-  /**
-   * If set to false, the specific item will be disabled, i.e. the user will not be able to make a
-   * selection.
-   * @default true
-   * @platform android | web
-   */
-  enabled?: boolean;
-}
-
-export type PickerProps<T = ItemValue> = {
-  ...ViewProps,
-  style?: TextStyleProp;
-  /**
-   * Value matching value of one of the items. Can be a string or an integer.
-   */
-  selectedValue?: T;
-  /**
-   * Callback for when an item is selected. This is called with the following parameters:
-   *   - `itemValue`: the `value` prop of the item that was selected
-   *   - `itemIndex`: the index of the selected item in this picker
-   */
-  onValueChange?: (itemValue: T, itemIndex: number) => void;
-  /**
-   * If set to false, the picker will be disabled, i.e. the user will not be able to make a
-   * selection.
-   * @platform android
-   */
-  enabled?: boolean;
-  /**
-   * On Android, specifies how to display the selection items when the user taps on the picker:
-   *
-   *   - 'dialog': Show a modal dialog. This is the default.
-   *   - 'dropdown': Shows a dropdown anchored to the picker view
-   *
-   * @platform android
-   */
-  mode?: 'dialog' | 'dropdown';
-  /**
-   * Style to apply to each of the item labels.
-   * @platform ios
-   */
-  itemStyle?: TextStyleProp;
-  /**
-  * Color to apply to the selection indicator.
-  * @platform ios
-  */
-  selectionColor?: ColorValue;
-  /**
-   * Prompt string for this picker, used on Android in dialog mode as the title of the dialog.
-   * @platform android
-   */
-  prompt?: string;
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-  /**
-   * Color of arrow for spinner dropdown in hexadecimal format
-   * @platform android
-   */
-  dropdownIconColor?: ColorValue;
-  /**
-   * Ripple color of spinner's arrow
-   * @platform android
-   */
-  dropdownIconRippleColor?: ColorValue;
-  /**
-   * On Android & iOS, used to truncate the text with an ellipsis after computing the text layout, including line wrapping,
-   * such that the total number of lines does not exceed this number. Default is '1'
-   * @platform android & iOS
-   */
-  numberOfLines?: number;
-  /**
-   * The string used for the accessibility label. Will be read once focused on the picker but not on change.
-   */
-  accessibilityLabel?: string;
-  /**
-   * Placeholder string for this picker, used on Windows if no item has been selected.
-   * @platform windows
-   */
-  placeholder?: string;  
-  /**
-   * Called when picker is focused
-   * @platform android
-   */
-  onFocus?: $NonMaybeType<TextProps['onFocus']>;
-  /**
-   * Called when picker is blurred
-   * @platform android
-   */
-  onBlur?: $NonMaybeType<TextProps['onBlur']>;
-  
-  /**
-   * These two props are extention that don't exist for `Picker` component
-   */
-  placeholder?: string,
-  placeholderTextColor?: ColorValue,
-}
-
-declare type SelectType<T> = React.AbstractComponent<PickerProps<T>, {
-  /**
-   * @platform android
-   */
-  focus: () => void;
-  /**
-   * @platform android
-   */
-  blur: () => void;
-}>;
+declare type SelectType<T> = React.ComponentType<PickerProps<T>>;
 declare export var Select: SelectType<ItemValue>;
 declare export function select<T>(): SelectType<T>;
 
-declare type OptionType<T> = React.AbstractComponent<PickerItemProps<T>>;
+declare type OptionType<T> = React.ComponentType<PickerItemProps<T>>;
 declare export var Option: OptionType<ItemValue>;
 declare export function option<T>(): OptionType<T>;

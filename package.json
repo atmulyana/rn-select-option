@@ -1,6 +1,6 @@
 {
   "name": "rn-select-option",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React Native component which is like `SELECT` tag in HTML. It wraps `Picker` component of '@react-native-picker/picker' package",
   "author": "AT Mulyana <atmulyana@yahoo.com>",
   "license": "MIT",
@@ -31,6 +31,6 @@
     "react-native": ">=0.57"
   },
   "devDependencies": {
-    "flow-bin": "*"
+    "flow-bin": "^0.275.0"
   }
 }
