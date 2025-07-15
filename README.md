@@ -12,7 +12,10 @@ Additionally, `Select` has two more props: `placeholder` and `placeholderTextCol
 
 ## **How to install**
 
-    npm i rn-select-option
+    npm i rn-select-option @react-native-picker/picker
+
+> `@react-native-picker/picker` package must be installed explicitly to avoid error even if `rn-select-option` sets
+> it as a required dependency, not peer-dependency.
 
 For iOS, there is one more step:
 

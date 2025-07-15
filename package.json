@@ -1,6 +1,6 @@
 {
   "name": "rn-select-option",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React Native component which is like `SELECT` tag in HTML. It wraps `Picker` component of '@react-native-picker/picker' package",
   "author": "AT Mulyana <atmulyana@yahoo.com>",
   "license": "MIT",
@@ -21,12 +21,12 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@react-native-picker/picker": ">=2.0.0",
     "lodash.isequal": ">=4.0.0",
     "reactjs-common": "*",
     "rn-style-props": "*"
   },
   "peerDependencies": {
+    "@react-native-picker/picker": ">=2.0.0",
     "react": ">=16.8.0",
     "react-native": ">=0.57"
   },
