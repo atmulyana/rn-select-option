@@ -12,7 +12,7 @@ Additionally, `Select` has two more props: `placeholder` and `placeholderTextCol
 
 ## **How to install**
 
-    npm i @react-native-picker/picker rn-select-option
+    npm i rn-select-option
 
 For iOS, there is one more step:
 
@@ -41,9 +41,8 @@ export default function App() {
             onValueChange={setVal}
             placeholder="--please select--"
         >
-            {items.map(item => <Option {...item} />)}
+            {items.map(item => <Option key={item.key} value={item.value} label={item.label} />)}
         </Select>
     </SafeAreaView>;
 }
-```
-If you want to change the selected value of `Picker`, you must use a `state` variable as the example above.
+````
