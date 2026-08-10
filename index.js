@@ -15,8 +15,6 @@ import {extractTextStyle} from 'rn-style-props';
 import Picker from './picker';
 import styles from './styles';
 
-console.log('typeof forwardRef: ', typeof forwardRef);
-
 export const Option = RNPicker.Item;
 
 export const Select = forwardRef(function Select({
