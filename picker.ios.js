@@ -11,10 +11,10 @@ import {
     View
 } from 'react-native';
 import {Picker as RNPicker} from '@react-native-picker/picker';
-import {setRef} from 'reactjs-common';
+import {forwardRef, setRef} from 'reactjs-common';
 import styles from './styles';
 
-export default React.forwardRef(function Picker({children, ...props}, ref) {
+export default forwardRef(function Picker({children, ...props}, ref) {
     const [visible, showList] = React.useState(false);
     
     setRef(ref, {

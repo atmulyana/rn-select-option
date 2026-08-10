@@ -44,7 +44,7 @@ export default StyleSheet.create({
         width: '80%',
     },
     pickerIOSBackdrop: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
         backgroundColor: 'black',
         opacity: 0.6,
     },
@@ -61,7 +61,7 @@ export default StyleSheet.create({
         top: 6,
     },
     pickerIOSContainer: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -84,13 +84,13 @@ export default StyleSheet.create({
         flex: 1,
     },
     touch: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
         backgroundColor: 'transparent',
         color: 'transparent',
         //opacity: 0. //On iOS, transparent causes `TouchableWithoutFeedback` cannot be pressed. Perhaps, it's assumed that the component doesn't exist.
     },
     touchPicker: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
         opacity: 0,
     },
 });

@@ -8,15 +8,18 @@ import {
     TextInput,
     View,
 } from 'react-native';
-import isEqual from 'lodash.isequal';
-import {extractTextStyle} from 'rn-style-props';
 import {Picker as RNPicker} from '@react-native-picker/picker';
+import {emptyArray, emptyString, objEquals} from 'javascript-common';
+import {forwardRef} from 'reactjs-common';
+import {extractTextStyle} from 'rn-style-props';
 import Picker from './picker';
 import styles from './styles';
 
+console.log('typeof forwardRef: ', typeof forwardRef);
+
 export const Option = RNPicker.Item;
 
-export const Select = React.forwardRef(function Select({
+export const Select = forwardRef(function Select({
     children,
     dropdownIconColor,
     dropdownIconRippleColor,
@@ -30,24 +33,58 @@ export const Select = React.forwardRef(function Select({
     let selectedLabel;
     children = React.Children.toArray(children);
     children.forEach(child => {
+        if (child.type !== Option) throw "Invalid child element! The child of `Select` must be `Option`";
         let {label, value} = child.props ?? {};
-        label = label ?? value+'';
-        if (isEqual(value, selectedValue)) {
+        label = label ?? value + emptyString;
+        if (objEquals(value, selectedValue)) {
             selectedValue = value; //for Object, it's necessary (`selectedValue` and `value` may have different reference, especially on iOS)
             selectedLabel = label;
         }
     });
     if (!selectedLabel && children[0]?.key !== null) {
-        selectedLabel = "";
-        children.unshift(<Option key={null} label="" value={undefined} />)
+        selectedLabel = emptyString;
+        children.unshift(<Option key={null} label={emptyString} value={undefined} />);
     }
 
-    const arrowStyle = [styles.arrow];
-    if (dropdownIconColor) arrowStyle.push({backgroundColor: dropdownIconColor});
+    const [rippleBgColor, setRippleBgColor] = React.useState('transparent');
     
+    const onPress = React.useCallback(() => {
+        setRippleBgColor(dropdownIconRippleColor ?? styles.ripple.backgroundColor);
+    }, [dropdownIconRippleColor]);
+    
+    const $tyle = React.useMemo(() => {
+        const s =  extractTextStyle(style, true);
+        s.container = [s.view, styles.container];
+        s.text = [styles.text, s.text, styles.textRequired];
+        s.arrow = dropdownIconColor ? [styles.arrow, {backgroundColor: dropdownIconColor}] : styles.arrow;
+        return s;
+    }, [style, dropdownIconColor]);
+    
+    return <View style={$tyle.container}>
+        <TextInput
+            {...{numberOfLines, placeholder, placeholderTextColor}}
+            multiline={true}
+            readOnly={true}
+            style={$tyle.text}
+            value={selectedLabel}
+        />
+        <View style={styles.arrowBox}>
+            <View style={styles.arrowContainer}>
+                <View style={$tyle.arrow} />
+            </View>
+            <Ripple {...{rippleBgColor, setRippleBgColor}} />
+        </View>
+        <Picker
+            {...props}
+            {...{children, numberOfLines, onPress, selectedValue}}
+            ref={ref}
+        />
+    </View>;
+});
+
+const Ripple = React.memo(function Ripple({rippleBgColor, setRippleBgColor}) {
     const {current: animSize} = React.useRef(new Animated.Value(styles.ripple.height));
     const {current: animRadius} = React.useRef(new Animated.Value(styles.ripple.height / 2));
-    const [rippleBgColor, setRippleBgColor] = React.useState('transparent')
     const rippleStyle = Object.assign({}, 
         styles.ripple,
         {backgroundColor: rippleBgColor}, 
@@ -59,7 +96,7 @@ export const Select = React.forwardRef(function Select({
     );
     React.useEffect(() => {
         animSize.addListener(({value}) => animRadius.setValue(value / 2));
-    }, []);
+    }, emptyArray);
     React.useEffect(() => {
         if (rippleBgColor != 'transparent') {
             Animated.timing(animSize, {
@@ -72,33 +109,10 @@ export const Select = React.forwardRef(function Select({
             });
         }
     }, [rippleBgColor]);
-    const onPress = React.useCallback(() => {
-        setRippleBgColor(dropdownIconRippleColor ?? styles.ripple.backgroundColor);
-    }, [dropdownIconRippleColor]);
-    
-    style = extractTextStyle(style, true);
-    
-    return <View style={[style.view, styles.container]}>
-        <TextInput
-            {...{numberOfLines, placeholder, placeholderTextColor}}
-            multiline={true}
-            readOnly={true}
-            style={[styles.text, style.text, styles.textRequired]}
-            value={selectedLabel}
-        />
-        <View style={styles.arrowBox}>
-            <View style={styles.arrowContainer}>
-                <View style={arrowStyle} />
-            </View>
-            <Animated.View style={rippleStyle} />
-        </View>
-        <Picker
-            {...props}
-            {...{children, numberOfLines, onPress, selectedValue}}
-            ref={ref}
-        />
-    </View>;
-});
+
+    return <Animated.View style={rippleStyle} />;
+},
+(prevProps, nextProps) => prevProps.rippleBgColor == nextProps.rippleBgColor);
 
 export const select = () => Select;
 export const option = () => Option;
