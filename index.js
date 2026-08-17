@@ -61,6 +61,7 @@ export const Select = forwardRef(function Select({
     return <View style={$tyle.container}>
         <TextInput
             {...{numberOfLines, placeholder, placeholderTextColor}}
+            aria-disabled={props?.disabled}
             multiline={true}
             readOnly={true}
             style={$tyle.text}

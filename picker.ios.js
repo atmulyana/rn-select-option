@@ -14,7 +14,7 @@ import {Picker as RNPicker} from '@react-native-picker/picker';
 import {forwardRef, setRef} from 'reactjs-common';
 import styles from './styles';
 
-export default forwardRef(function Picker({children, ...props}, ref) {
+export default forwardRef(function Picker({children, disabled, ...props}, ref) {
     const [visible, showList] = React.useState(false);
     
     setRef(ref, {
@@ -28,10 +28,14 @@ export default forwardRef(function Picker({children, ...props}, ref) {
     });
 
     return <>
-        <TouchableWithoutFeedback onPress={() => {
-            props.onPress();
-            showList(true);
-        }}>
+        <TouchableWithoutFeedback 
+            aria-disabled={disabled}
+            disabled={disabled}
+            onPress={() => {
+                props.onPress();
+                showList(true);
+            }}
+        >
             <View style={styles.touch} />
         </TouchableWithoutFeedback>
         <Modal visible={visible} supportedOrientations={['landscape', 'portrait']} transparent={true}>
@@ -40,7 +44,7 @@ export default forwardRef(function Picker({children, ...props}, ref) {
                     <View style={styles.pickerIOSBackdrop} />
                 </TouchableWithoutFeedback>
                 <View style={styles.pickerIOS}>
-                    <RNPicker {...props} style={StyleSheet.absoluteFill}>
+                    <RNPicker {...props} enabled={!disabled} style={StyleSheet.absoluteFill}>
                         {children}
                     </RNPicker>
                     <Text onPress={() => showList(false)} style={styles.pickerIOSClose}>X</Text>

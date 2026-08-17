@@ -6,23 +6,28 @@
 import * as React from 'react';
 import {Picker} from '@react-native-picker/picker';
 
-type BasePickerProps = React.ElementConfig<typeof Picker>;
-type BasePickerItemProps = React.ElementConfig<typeof Picker.Item>;
+type BasePickerProps<T> = React.ElementConfig<typeof Picker<T>>;
+type BasePickerItemProps<T> = React.ElementConfig<typeof Picker.Item<T>>;
 export type ItemValue = number | string;
 export type PickerProps<T = ItemValue> = {|
-    ...BasePickerProps,
+    ...Omit<BasePickerProps<T>, 'enabled' | 'ref'>,
+    diabled?: boolean,
     selectedValue?: T,
     onValueChange?: (itemValue: T, itemIndex: number) => mixed,
+    ref?: React.RefSetter<{
+        blur: () => void,
+        focus: () => void,
+    }>,
 |};
 export type PickerItemProps<T = ItemValue> = {|
-    ...BasePickerItemProps,
+    ...BasePickerItemProps<T>,
     value?: T,
 |};
 
-declare type SelectType<T> = React.ComponentType<PickerProps<T>>;
+type SelectType<T> = React.ComponentType<PickerProps<T>>;
 declare export var Select: SelectType<ItemValue>;
 declare export function select<T>(): SelectType<T>;
 
-declare type OptionType<T> = React.ComponentType<PickerItemProps<T>>;
+type OptionType<T> = React.ComponentType<PickerItemProps<T>>;
 declare export var Option: OptionType<ItemValue>;
 declare export function option<T>(): OptionType<T>;
