@@ -103,13 +103,13 @@ const Ripple = React.memo(function Ripple({rippleBgColor, setRippleBgColor}) {
                 duration: 1000,
                 useNativeDriver: false,
             }).start(() => {
-                setRippleBgColor('transparent');
                 animSize.setValue(styles.ripple.height);
+                setRippleBgColor('transparent');
             });
         }
     }, [rippleBgColor]);
 
-    return <Animated.View style={rippleStyle} />;
+    return rippleBgColor == 'transparent' ? null : <Animated.View style={rippleStyle} />;
 },
 (prevProps, nextProps) => prevProps.rippleBgColor == nextProps.rippleBgColor);
 
