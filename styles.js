@@ -1,6 +1,7 @@
 /**
  *  https://github.com/atmulyana/rn-select-option
  */
+'use strict';
 import {StyleSheet} from 'react-native';
 
 const ARROW_COLOR = '#ddd';
@@ -82,6 +83,7 @@ export default StyleSheet.create({
     textRequired: {
         alignSelf: 'stretch',
         flex: 1,
+        overflow: 'hidden',
     },
     touch: {
         ...StyleSheet.absoluteFill,

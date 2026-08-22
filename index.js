@@ -62,8 +62,9 @@ export const Select = forwardRef(function Select({
         <TextInput
             {...{numberOfLines, placeholder, placeholderTextColor}}
             aria-disabled={props?.disabled}
-            multiline={true}
+            multiline={numberOfLines > 1}
             readOnly={true}
+            selection={selection}
             style={$tyle.text}
             value={selectedLabel}
         />
@@ -112,6 +113,8 @@ const Ripple = React.memo(function Ripple({rippleBgColor, setRippleBgColor}) {
     return rippleBgColor == 'transparent' ? null : <Animated.View style={rippleStyle} />;
 },
 (prevProps, nextProps) => prevProps.rippleBgColor == nextProps.rippleBgColor);
+
+const selection = {start: 0, end: 0};
 
 export const select = () => Select;
 export const option = () => Option;
